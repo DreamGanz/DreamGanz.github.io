@@ -1,0 +1,71 @@
+const int button1Pin = 2; // Pin untuk tombol 1
+const int button2Pin = 3; // Pin untuk tombol 2
+
+const int led1Pin = 4; // Pin untuk LED 1
+const int led2Pin = 5; // Pin untuk LED 2
+const int led3Pin = 6; // Pin untuk LED 3
+const int led4Pin = 7; // Pin untuk LED 4
+
+int ledState = 0; // Mengatur status LED
+
+void setup() {
+    pinMode(button1Pin, INPUT_PULLUP); // Mengatur tombol 1 sebagai input
+    pinMode(button2Pin, INPUT_PULLUP); // Mengatur tombol 2 sebagai input
+    pinMode(led1Pin, OUTPUT); // Mengatur LED 1 sebagai output
+    pinMode(led2Pin, OUTPUT); // Mengatur LED 2 sebagai output
+    pinMode(led3Pin, OUTPUT); // Mengatur LED 3 sebagai output
+    pinMode(led4Pin, OUTPUT); // Mengatur LED 4 sebagai output
+}
+
+void loop() {
+    if (digitalRead(button1Pin) == LOW) {
+        delay(200); // Debounce
+        ledState++;
+        if (ledState > 4) ledState = 4; // Maksimal LED yang menyala
+        updateLEDs();
+        while (digitalRead(button1Pin) == LOW); // Tunggu sampai tombol dilepas
+    }
+    
+    if (digitalRead(button2Pin) == LOW) {
+        delay(200); // Debounce
+        ledState--;
+        if (ledState < 0) ledState = 0; // Minimal LED yang menyala
+        updateLEDs();
+        while (digitalRead(button2Pin) == LOW); // Tunggu sampai tombol dilepas
+    }
+}
+
+void updateLEDs() {
+    switch (ledState) {
+        case 0: // Semua LED mati
+            digitalWrite(led1Pin, LOW);
+            digitalWrite(led2Pin, LOW);
+            digitalWrite(led3Pin, LOW);
+            digitalWrite(led4Pin, LOW);
+            break;
+        case 1: // Hanya LED 1 menyala
+            digitalWrite(led1Pin, HIGH);
+            digitalWrite(led2Pin, LOW);
+            digitalWrite(led3Pin, LOW);
+            digitalWrite(led4Pin, LOW);
+            break;
+        case 2: // LED 1 dan 2 menyala
+            digitalWrite(led1Pin, HIGH);
+            digitalWrite(led2Pin, HIGH);
+            digitalWrite(led3Pin, LOW);
+            digitalWrite(led4Pin, LOW);
+            break;
+        case 3: // LED 1, 2, dan 3 menyala
+            digitalWrite(led1Pin, HIGH);
+            digitalWrite(led2Pin, HIGH);
+            digitalWrite(led3Pin, HIGH);
+            digitalWrite(led4Pin, LOW);
+            break;
+        case 4: // Semua LED menyala
+            digitalWrite(led1Pin, HIGH);
+            digitalWrite(led2Pin, HIGH);
+            digitalWrite(led3Pin, HIGH);
+            digitalWrite(led4Pin, HIGH);
+            break;
+    }
+}
