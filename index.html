@@ -9,28 +9,78 @@
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: #f4f4f4;
+            background-image: url('background-hujan.jpg'); /* Ganti dengan URL gambar Anda */
+            background-size: cover;
+            background-position: center;
+            color: white; /* Mengubah warna teks agar kontras */
         }
         button {
             padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
+            margin: 10px;
             border: none;
             border-radius: 5px;
-            background-color: #007BFF;
+            background-color: rgba(0, 123, 255, 0.8); /* Warna dengan transparansi */
             color: white;
+            cursor: pointer;
+            font-size: 16px;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: rgba(0, 86, 179, 0.8);
+        }
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Warna latar belakang pop-up */
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: black; /* Mengubah warna teks pop-up */
+        }
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
         }
     </style>
 </head>
 <body>
-    <h1>Selamat Datang di Halaman Utama</h1>
-    <button onclick="dreamganz.github.io/anjay/akukaya.txt">Next Page</button>
+
+    <h1>Selamat Datang di Halaman Utama!</h1>
+    <button id="welcomeBtn">Tombol Selamat Datang</button>
+    <button onclick="location.href='halaman-selanjutnya.html'">Ke Halaman Selanjutnya</button>
+
+    <div id="overlay"></div>
+    <div id="popup">
+        <p>Selamat datang! Terima kasih telah mengunjungi halaman ini.</p>
+        <button onclick="closePopup()">Tutup</button>
+    </div>
+
+    <script>
+        const welcomeBtn = document.getElementById('welcomeBtn');
+        const popup = document.getElementById('popup');
+        const overlay = document.getElementById('overlay');
+
+        welcomeBtn.onclick = function() {
+            overlay.style.display = 'block';
+            popup.style.display = 'block';
+        };
+
+        function closePopup() {
+            overlay.style.display = 'none';
+            popup.style.display = 'none';
+        }
+    </script>
+
 </body>
 </html>
