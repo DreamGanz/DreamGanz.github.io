@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Saya</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Nama Anda</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about" class="card">
+        <img src="path/to/your/profile.jpg" alt="Foto Profil" class="profile-pic">
+        <h2>Tentang Saya</h2>
+        <p><strong>Pekerjaan:</strong> [Pekerjaan Anda]</p>
+        <p><strong>Kontak:</strong> <a href="mailto:email@example.com">email@example.com</a></p>
+        <p><strong>Pengalaman:</strong> <a href="folder/Data/Pengalaman.html" class="experience-link">Lihat Pengalaman</a></p>
+    </section>
+
+    <section id="projects">
+        <h2>Proyek Saya</h2>
+        <div class="project">
+            <h3>Proyek 1</h3>
+            <p>Deskripsi proyek 1.</p>
+        </div>
+        <div class="project">
+            <h3>Proyek 2</h3>
+            <p>Deskripsi proyek 2.</p>
+        </div>
+        <div class="project">
+            <h3>Proyek 3</h3>
+            <p>Deskripsi proyek 3.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Kontak Saya</h2>
+        <p>Email: <a href="mailto:email@example.com">email@example.com</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Nama Anda</p>
+    </footer>
+
+    <script>
+        // Simple smooth scrolling effect
+        const links = document.querySelectorAll('nav a');
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
